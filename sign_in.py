@@ -40,10 +40,10 @@ class In(Frame):
         password = self.pass_var.get()
         user = None
 
-        if name not in uarr:
-            # give error
+        # if name not in uarr:
+        #     # give error
         
-        else:
-            if parr[uarr.index(name)] == password:
-                user = name
-                # continue to recommendation screen, passing user param
+        # else:
+        #     if parr[uarr.index(name)] == password:
+        #         user = name
+        #         # continue to recommendation screen, passing user param
