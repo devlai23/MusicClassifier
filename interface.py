@@ -3,15 +3,12 @@ from tkinter import filedialog
 import winsound
 
 class interface(Frame):
-    def __init__(self, master):
-        super(interface, self).__init__(master)
+    def __init__(self, master, previous):
+        super().__init__(master)
         self.grid()
-        Photo = PhotoImage(file="Images-ViaDelMelodia/pure-black-background.png")
-        Photo = Label(self, image=Photo)
-        Photo.photo = Photo
-        Photo.grid(row=0, column=0, rowspan=8,columnspan=7)
         self.selected = ""
         self.playing = True
+        self.previous = previous
         self.create_widgets()
 
     def choosethemusic(self):
@@ -47,11 +44,17 @@ class interface(Frame):
         choosebutton = Button(self, text="Choose File:", command=self.choosethemusic, font=("Helvetica", 10, "bold"))
         choosebutton.grid(row =5, column=1)
 
-        playbutton = Button(self, text="Play Music/Stop Music", command=self.play_music,font=("Helvetica", 10, "bold")).grid(row =5, column = 4)
+        playbutton = Button(self, text="Play Music/Stop Music", command=self.play_music,font=("Helvetica", 10, "bold")).grid(row =5, column = 5)
 
-        Label(self, text="By Hayun Jung, Devon Lai, Kevin Liu", font=("Helvetica",16)).grid(row=7, column = 3)
+        previousbutton = Button(self, text="Previous Recommendations", command=self.recommendations, font=("Helvetica", 10, "bold")).grid(row=5, column=3)
 
-root = Tk()
-root.title("Via del Melodia")
-app = interface(root)
-root.mainloop()
+        recommendations = Button(self, text="New Recommendation", command=self.next, font=("Helvetica", 10, "bold")).grid(row=6, column=5)
+
+        Label(self, text="By Hayun Jung, Devon Lai, Kevin Liu", font=("Helvetica",16)).grid(row=8, column = 3)
+
+    def recommendations(self):
+        self.previous()
+
+    def next(self):
+        #command for reccomednation, put your reccomedning stuff here or connect it
+        Label(self, text="RECCOMEDNATION", font=("Helvetica", 10, "bold")).grid(row=7, column=3)
