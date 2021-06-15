@@ -3,6 +3,7 @@ from tkinter import filedialog
 import winsound
 from SongRec import SongRec
 from model import GenreClassifier
+from threading import *
 
 currentUser = None
 pastrecs = []
@@ -52,14 +53,13 @@ class interface(Frame):
         Label(self, text="Via Del Melodia:", font=("Helvetica", 30, "bold")).grid(row=1, column=3)
         Label(self, text="Choose song below :D for reccomendations!!", font=("Helvetica", 15)).grid(row=4, column=3)
 
-        choosebutton = Button(self, text="Choose File:", command=self.choosethemusic, font=("Helvetica", 10, "bold"))
-        choosebutton.grid(row =5, column=1)
+        Button(self, text="Choose File:", command=self.choosethemusic, font=("Helvetica", 10, "bold")).grid(row =5, column=1)
 
-        playbutton = Button(self, text="Play Music/Stop Music", command=self.play_music,font=("Helvetica", 10, "bold")).grid(row =5, column = 5)
+        Button(self, text="Play Music/Stop Music", command=self.play_music,font=("Helvetica", 10, "bold")).grid(row =5, column = 5)
 
-        previousbutton = Button(self, text="Previous Recommendations", command=self.recommendations, font=("Helvetica", 10, "bold")).grid(row=5, column=3)
+        Button(self, text="Previous Recommendations", command=self.recommendations, font=("Helvetica", 10, "bold")).grid(row=5, column=3)
 
-        recommendations = Button(self, text="New Recommendation", command=self.next, font=("Helvetica", 10, "bold")).grid(row=6, column=5)
+        Button(self, text="New Recommendation", command=Thread(target=self.n).start, font=("Helvetica", 10, "bold")).grid(row=6, column=5)
 
         Label(self, text="By Hayun Jung, Devon Lai, Kevin Liu", font=("Helvetica",16)).grid(row=8, column = 3)
 
@@ -74,7 +74,7 @@ class interface(Frame):
         global pastrecs
         return pastrecs
 
-    def next(self):
+    def n(self):
         # 1. send input song to ML model to determine genre
         global selectedSong
         g = GenreClassifier()
