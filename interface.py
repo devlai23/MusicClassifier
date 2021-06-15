@@ -80,10 +80,13 @@ class interface(Frame):
         
         # 2. run recommend function, using genre as input
         global currentUser
-        ret = SongRec.recommend(genre, currentUser) #THIS IS DELETING ACNTINFO FOR SOME REASON
+        ret = SongRec.recommend(genre, currentUser)
 
         # display rec on screen instead of in terminal
-        Label(self, text=ret, font=("Helvetica", 10, "bold")).grid(row=7, column=3)
+        s = ""
+        for x in ret:
+            s += x + " "
+        Label(self, text=s, font=("Helvetica", 10, "bold")).grid(row=7, column=3)
 
     def getGenre(self,a):
         return "Country"
