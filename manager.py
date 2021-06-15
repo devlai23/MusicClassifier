@@ -40,7 +40,7 @@ class Manager(object):
     def recommendations(self):
         self.currentScreen.destroy()
         self.root.title("Previous Recommendations")
-        self.currentScreen = Previous(self.root, self.interface)
+        self.currentScreen = Previous(self.root, self.interface, interface.getPastRecs(self))
 
 def main():
     music = Manager()

@@ -4,6 +4,7 @@ import winsound
 from SongRec import SongRec
 
 currentUser = None
+pastrecs = []
 
 class interface(Frame):
     def __init__(self, master, previous, user):
@@ -62,6 +63,13 @@ class interface(Frame):
         # display songs on screen instead of in terminal
         global currentUser 
         previoussongs = SongRec.retrieveSongs(currentUser)
+        global pastrecs
+        pastrecs = previoussongs
+        self.previous()
+    
+    def getPastRecs(self):
+        global pastrecs
+        return pastrecs
 
     def next(self):
         # 1. send input song to ML model to determine genre
