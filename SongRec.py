@@ -73,15 +73,17 @@ class SongRec:
                 data[counter] = data[counter].strip() + "~" + song + ":" + artist + "\n"
                 acntinfo.seek(0)
                 acntinfo.truncate()
-                print(data)
+                
                 acntinfo.writelines(data)
+     
                 added = True
             counter += 1
         if not added:
             acntinfo.write("\n" + user+"~"+song+":"+artist)
 
         driver.close()
-        print("exiting")
+        acntinfo.close()
+
         return returnval
 # SongRec.recommend("country", "devon")
 
