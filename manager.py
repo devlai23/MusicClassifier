@@ -15,7 +15,10 @@ class Manager(object):
     def start_screen(self):
         self.root.title("Via Del Melodia")
         self.currentScreen = Login(self.root, self.sign_in, self.sign_up)
-
+    def start(self):
+        self.currentScreen.destroy()
+        self.root.title("Via Del Melodia")
+        self.currentScreen = Login(self.root, self.sign_in, self.sign_up)
     def sign_in(self):
         self.currentScreen.destroy()
         self.root.title("Sign In")
@@ -24,7 +27,7 @@ class Manager(object):
     def sign_up(self):
         self.currentScreen.destroy()
         self.root.title("Sign Up")
-        self.currentScreen = Up(self.root, self.interface)
+        self.currentScreen = Up(self.root, self.start)
 
     ##def loading(self):
         ##self.root.geometry("1200x600")

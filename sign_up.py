@@ -1,8 +1,9 @@
 from tkinter import *
 
 class Up(Frame):
-    def __init__(self, master, choosing):
+    def __init__(self, master, back):
         super().__init__(master)
+        self.back = back
         self.grid()
         self.create_widgets()
 
@@ -36,3 +37,4 @@ class Up(Frame):
 
         users.write(name + " ")
         passes.write(password + " ")
+        self.back()
