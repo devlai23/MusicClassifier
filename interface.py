@@ -61,7 +61,7 @@ class interface(Frame):
         # define user variable
         # display songs on screen instead of in terminal
         global currentUser 
-        SongRec.retrieveSongs(currentUser)
+        previoussongs = SongRec.retrieveSongs(currentUser)
 
     def next(self):
         # 1. send input song to ML model to determine genre

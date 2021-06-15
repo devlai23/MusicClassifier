@@ -5,13 +5,15 @@ from Song import Song
 class SongRec:
     @staticmethod
     def retrieveSongs(user):
+        songs = []
         acntinfo=open("acntinfo.txt", "r+")
         for line in acntinfo:
             if line.split("~")[0].strip() == user:
                 info = line.split("~")
                 for i in range(0, len(info)):
                     if i > 0:
-                        print(info[i].split(":")[0] + " by " + info[i].split(":")[1])
+                        songs.append(info[i].split(":")[0] + " by " + info[i].split(":")[1].strip())
+        return songs
 
     @staticmethod
     def file_len(fname):
