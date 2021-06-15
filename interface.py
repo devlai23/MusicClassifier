@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import filedialog
 import winsound
 from SongRec import SongRec
+from model import GenreClassifier
 
 currentUser = None
 pastrecs = []
@@ -76,12 +77,14 @@ class interface(Frame):
     def next(self):
         # 1. send input song to ML model to determine genre
         global selectedSong
-        genre = self.getGenre(selectedSong) #NOT A REAL FUNCTION YET
+        g = GenreClassifier()
+        out = g.predict(selectedSong)
+        print(out.getTitle())
 
         
         # 2. run recommend function, using genre as input
         global currentUser
-        ret = SongRec.recommend(genre, currentUser)
+        ret = SongRec.recommend(out.getTitle(), currentUser)
 
         # display rec on screen instead of in terminal
         s = ""
@@ -89,5 +92,5 @@ class interface(Frame):
             s += x + " "
         Label(self, text=s, font=("Helvetica", 10, "bold")).grid(row=7, column=3)
 
-    def getGenre(self,a):
+    def getSampleGenre(self,a):
         return "Country"
