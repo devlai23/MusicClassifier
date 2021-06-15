@@ -200,7 +200,7 @@ class GenreClassifier:
     def __init__(self):
         self.network = best_knn
 
-    def predict(file):
+    def predict(self, file):
         inp = get_input_from_file(file)
         result = knn.predict(inp)
         s = Song(result[0])
