@@ -40,10 +40,13 @@ class In(Frame):
         password = self.pass_var.get()
         user = None
 
-        # if name not in uarr:
-        #     # give error
-        
-        # else:
-        #     if parr[uarr.index(name)] == password:
-        #         user = name
-        #         # continue to recommendation screen, passing user param
+        if name not in uarr:
+            Label(self, text="Wrong Username, Try again!", font=("Helvetica", 20)).grid(row=11, column=5)
+
+        else:
+            Label(self, text="", font=("Helvetica", 20)).grid(row=11, column=5)
+            if parr[uarr.index(name)] == password:
+                user = name
+                self.choosing()
+            else:
+                Label(self, text="Wrong Password, Try again!", font=("Helvetica", 20)).grid(row=11, column=5)

@@ -35,7 +35,7 @@ class SongRec:
 
         # genre = genres[max]
         if input == "Hip-Hop":
-            genre = "hip" + chr(37) + "20hop"
+            input = "hip" + chr(37) + "20hop"
         URL = "https://www.chosic.com/genre-chart/explore/?genre=" + input
 
 

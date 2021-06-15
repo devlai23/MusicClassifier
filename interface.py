@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
 import winsound
+import SongRec
 
 class interface(Frame):
     def __init__(self, master, previous):
@@ -53,8 +54,14 @@ class interface(Frame):
         Label(self, text="By Hayun Jung, Devon Lai, Kevin Liu", font=("Helvetica",16)).grid(row=8, column = 3)
 
     def recommendations(self):
-        self.previous()
+        # define user variable
+        # display songs on screen instead of in terminal    
+        SongRec.retrieveSongs(user)
 
     def next(self):
-        #command for reccomednation, put your reccomedning stuff here or connect it
-        Label(self, text="RECCOMEDNATION", font=("Helvetica", 10, "bold")).grid(row=7, column=3)
+        # 1. send input song to ML model to determine genre
+        # 2. run recommend function, using genre as input
+        # define both variables
+        # display rec on screen instead of in terminal
+        SongRec.recommend(genre, user)
+        Label(self, text="Recommendation", font=("Helvetica", 10, "bold")).grid(row=7, column=3)
