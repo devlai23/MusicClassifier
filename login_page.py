@@ -13,8 +13,8 @@ class Login(Frame):
         w.photo = back
         w.grid(row=0, column=0, rowspan=16, columnspan=16)
         Label(self, text = "Welcome to Via Del Melodia!!", font=("Helvetica", 30, "bold")).grid(row=0, column=4)
-        Button(self, text="Login",command=self.sign_in, font=("Helvetica", 20, "bold")).grid(row =7, column = 1)
-        Button(self, text="Sign in",command=self.sign_up, font=("Helvetica", 20, "bold")).grid(row =7, column=6)
+        Button(self, text="Sign in",command=self.sign_in, font=("Helvetica", 20, "bold")).grid(row =7, column = 1)
+        Button(self, text="Sign up",command=self.sign_up, font=("Helvetica", 20, "bold")).grid(row =7, column=6)
 
     def sign_in(self):
         self.one()

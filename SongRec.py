@@ -98,7 +98,6 @@ while (i != "quit"):
     passes.seek(0)
     uarr = users.read().split()
     parr = passes.read().split()
-
     while (i == "sign in"):
         print("enter your username")
         uin = input()
