@@ -21,22 +21,22 @@ class SongRec:
             return i+1
         
     @staticmethod
-    def recommend(input, threshold, user):
+    def recommend(input, user):
         acntinfo=open("acntinfo.txt", "r+")
-        genres = {}
-        for d in input.getConfidence().keys():
-            if (d > threshold):
-                genres[d] = input.getConfidence()[d]
+        # genres = {}
+        # for d in input.getConfidence().keys():
+        #     if (d > threshold):
+        #         genres[d] = input.getConfidence()[d]
 
-        max = -100
-        for x in input.getConfidence().keys():
-            if x > max:
-                max = x
+        # max = -100
+        # for x in input.getConfidence().keys():
+        #     if x > max:
+        #         max = x
 
-        genre = genres[max]
-        if genres[max] == "hip-hop":
+        # genre = genres[max]
+        if input == "Hip-Hop":
             genre = "hip" + chr(37) + "20hop"
-        URL = "https://www.chosic.com/genre-chart/explore/?genre=" + genre
+        URL = "https://www.chosic.com/genre-chart/explore/?genre=" + input
 
 
         options = webdriver.ChromeOptions()
@@ -77,7 +77,6 @@ class SongRec:
             acntinfo.write("\n" + user+"~"+song+":"+artist)
 
         driver.close()
-        # SongRec.retrieveSongs(user)
 
 users=open("users.txt", "r+")
 uarr = users.read().split()
@@ -116,6 +115,5 @@ while (i != "quit"):
     if user != None:
         break;
 
-s = Song("Test")
-s.confidence[0.9] = "Reggae"
-SongRec.recommend(s, 0.5, user)
+s = "Country"
+SongRec.recommend(s, user)

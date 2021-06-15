@@ -11,6 +11,6 @@ class Song:
     def getConfidence(self):
         return self.confidence
     
-    def getGenres(self):
-        # run this song through model to get genre confidence values, set in dictionary
-        pass
+    # confidence should be of the form ("percent confidence (ie. 0.9) : genre (ie Classical")
+    def setConfidence(self, dict):
+        confidence = dict
