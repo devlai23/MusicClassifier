@@ -1,21 +1,15 @@
 # Imports
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-# import seaborn as sns
-import wave
-import contextlib
 import librosa
 
 # File Imports
 from Song import Song
 
 from sklearn import preprocessing
-from sklearn.preprocessing import MinMaxScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
-from sklearn.model_selection import GridSearchCV
 
 df = pd.read_csv('features_3_sec.csv')
 df2 = pd.read_csv('features_30_sec.csv')
@@ -163,44 +157,11 @@ def get_input_from_file(fname):
 
     return inp.reshape(1, -1)
 
-# inps = [
-#         get_input_from_file("blues.00000.wav"),
-#         get_input_from_file("blues.00008.wav"),
-#         get_input_from_file("pop.00003.wav"),
-#         get_input_from_file("pop.00068.wav"),
-#         get_input_from_file("classical.00002.wav"),
-#         get_input_from_file("classical.00005.wav"),
-#         get_input_from_file("bensound-jazzyfrenchy.wav")
-# ]
-
-# keys = [
-#         "blues",
-#         "blues",
-#         "pop",
-#         "pop",
-#         "classical",
-#         "classical",
-#         "jazz"
-# ]
-
-# for i in range(1, 5):
-#   knn = KNeighborsClassifier(n_neighbors = i)
-
-#   # Fit the classifier to the training data
-#   knn.fit(X, y)
-
-#   print("NNeighbors:", i)
-
-#   for i in range(len(inps)):
-#     print(knn.predict(inps[i]) == keys[i], knn.predict(inps[i]), end="; ")
-#   print("Score:", knn.score(X, y))
-#   print("-" * 5)
-
 class GenreClassifier:
     def __init__(self):
         self.network = best_knn
 
-    def predict(self, file):
+    def predict(file):
         inp = get_input_from_file(file)
         result = knn.predict(inp)
         s = Song(result[0])
