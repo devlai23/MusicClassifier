@@ -59,9 +59,13 @@ class interface(Frame):
 
         Button(self, text="Previous Recommendations", command=self.recommendations, font=("Helvetica", 10, "bold")).grid(row=5, column=3)
 
-        Button(self, text="New Recommendation", command=Thread(target=self.n).start, font=("Helvetica", 10, "bold")).grid(row=6, column=5)
+        Button(self, text="New Recommendation", command=self.threading, font=("Helvetica", 10, "bold")).grid(row=6, column=5)
 
         Label(self, text="By Hayun Jung, Devon Lai, Kevin Liu", font=("Helvetica",16)).grid(row=8, column = 3)
+
+    def threading(self):
+        t1 = Thread(target=self.n)
+        t1.start()
 
     def recommendations(self):
         global currentUser 
