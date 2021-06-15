@@ -44,24 +44,27 @@ class interface(Frame):
             winsound.PlaySound(self.selected, winsound.SND_ASYNC)
             self.playing = False
         if self.selected == False:
-            Label(self, text = ":< it does not play ").grid(row = 8, column=3)
+            Label(self, text = ":< it does not play ").grid(row = 8, column=4)
         elif self.selected == True:
             Label(self, text= "Aye it plays").grid(row=8, column =3)
 
-    def create_widgets(self):   
-        Label(self, text="Via Del Melodia:", font=("Helvetica", 30, "bold")).grid(row=1, column=3)
-        Label(self, text="Choose song below :D for reccomendations!!", font=("Helvetica", 15)).grid(row=4, column=3)
+    def create_widgets(self):
+        back = PhotoImage(file="trial.png")
+        w = Label(self, image=back)
+        w.photo = back
+        w.grid(column=0, rowspan=15, columnspan=30)
+        Label(self, text="Choose song below :D for recommendations!!", font=("Helvetica", 15)).grid(row=0, column=3)
 
         choosebutton = Button(self, text="Choose File:", command=self.choosethemusic, font=("Helvetica", 10, "bold"))
-        choosebutton.grid(row =5, column=1)
+        choosebutton.grid(row =6, column=3)
 
-        playbutton = Button(self, text="Play Music/Stop Music", command=self.play_music,font=("Helvetica", 10, "bold")).grid(row =5, column = 5)
+        playbutton = Button(self, text="Play Music/Stop Music", command=self.play_music,font=("Helvetica", 10, "bold")).grid(row =7, column = 3)
 
-        previousbutton = Button(self, text="Previous Recommendations", command=self.recommendations, font=("Helvetica", 10, "bold")).grid(row=5, column=3)
+        previousbutton = Button(self, text="Previous Recommendations", command=self.recommendations, font=("Helvetica", 10, "bold")).grid(row=8, column=3)
 
-        recommendations = Button(self, text="New Recommendation", command=self.next, font=("Helvetica", 10, "bold")).grid(row=6, column=5)
+        recommendations = Button(self, text="New Recommendation", command=self.next, font=("Helvetica", 10, "bold")).grid(row=9, column=3)
 
-        Label(self, text="By Hayun Jung, Devon Lai, Kevin Liu", font=("Helvetica",16)).grid(row=8, column = 3)
+        Label(self, text="By Hayun Jung, Devon Lai, Kevin Liu", font=("Helvetica",16)).grid(row=14, column = 3)
 
     def recommendations(self):
         global currentUser 
@@ -75,6 +78,7 @@ class interface(Frame):
         return pastrecs
 
     def next(self):
+        Label(self, text="", font=("Helvetica", 10, "bold")).grid(row=11, column=3)
         # 1. send input song to ML model to determine genre
         global selectedSong
         g = GenreClassifier()
@@ -90,7 +94,7 @@ class interface(Frame):
         s = ""
         for x in ret:
             s += x + " "
-        Label(self, text=s, font=("Helvetica", 10, "bold")).grid(row=7, column=3)
+        Label(self, text=s, font=("Helvetica", 10, "bold")).grid(row=11, column=3)
 
     def getSampleGenre(self,a):
         return "Country"

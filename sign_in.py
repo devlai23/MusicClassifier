@@ -9,23 +9,27 @@ class In(Frame):
         self.create_widgets()
 
     def create_widgets(self):
+        back = PhotoImage(file="piano.png")
+        w = Label(self, image=back)
+        w.photo = back
+        w.grid(row=0, column=0, rowspan=15, columnspan=8)
         self.user_var = StringVar()
         self.pass_var = StringVar()
 
-        Label(self, text="Enter your password and username!!", font=("Helvetica", 30, "bold")).grid(row=1, column=3)
+        Label(self, text="Enter your password and username!!", font=("Helvetica", 30)).grid(row=0, column=3)
 
         # Password
-        Label(self, text="Password", font=("Helvetica", 20)).grid(row=7, column=3)
+        Label(self, text="Password:", font=("Helvetica", 10)).grid(row=6, column=3)
         self.password = Entry(self, textvariable=self.pass_var)
-        self.password.grid(row=9, column=3)
+        self.password.grid(row=7, column=3)
 
         # Username
-        Label(self, text="Username", font=("Helvetica", 20)).grid(row=3, column=3)
+        Label(self, text="Username:", font=("Helvetica", 10)).grid(row=4, column=3)
         self.username = Entry(self, textvariable=self.user_var)
         self.username.grid(row=5, column=3)
 
         # Next
-        Button(self, text="Next", command=self.signin, font=("Helvetica", 20)).grid(row=11, column=3)
+        Button(self, text="Next", command=self.signin, font=("Helvetica", 15)).grid(row=9, column=3)
 
     def signin(self):
         users=open("users.txt", "r+")
@@ -42,7 +46,7 @@ class In(Frame):
         password = self.pass_var.get()
 
         if name not in uarr:
-            Label(self, text="Wrong Username, Try again!", font=("Helvetica", 20)).grid(row=11, column=5)
+            Label(self, text="Wrong Username, Try again!", font=("Helvetica", 15)).grid(row=11, column=3)
 
         else:
             Label(self, text="", font=("Helvetica", 20)).grid(row=11, column=5)
@@ -51,7 +55,7 @@ class In(Frame):
                 username = name
                 self.choosing()
             else:
-                Label(self, text="Wrong Password, Try again!", font=("Helvetica", 20)).grid(row=11, column=5)
+                Label(self, text="Wrong Password, Try again!", font=("Helvetica", 15)).grid(row=11, column=3)
 
     def getUser(self):
         global username
