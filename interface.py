@@ -30,6 +30,7 @@ class interface(Frame):
         
         global selectedSong
         selectedSong = b
+        self.selected = b
 
 
     def play_music(self):
@@ -46,7 +47,7 @@ class interface(Frame):
         elif self.selected == True:
             Label(self, text= "Aye it plays").grid(row=8, column =3)
 
-    def create_widgets(self):
+    def create_widgets(self):   
         Label(self, text="Via Del Melodia:", font=("Helvetica", 30, "bold")).grid(row=1, column=3)
         Label(self, text="Choose song below :D for reccomendations!!", font=("Helvetica", 15)).grid(row=4, column=3)
 
