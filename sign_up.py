@@ -36,3 +36,5 @@ class Up(Frame):
 
         users.write(name + " ")
         passes.write(password + " ")
+
+        # send user back to home screen

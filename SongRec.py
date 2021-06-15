@@ -112,7 +112,7 @@ while (i != "quit"):
             else:
                 print("invalid password")
     if user != None:
-        break;
+        break
 
 s = "Country"
 SongRec.recommend(s, user)
