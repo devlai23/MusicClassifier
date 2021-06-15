@@ -63,6 +63,7 @@ class SongRec:
                 song = attributes[i+1]
                 artist = attributes[i+2]
                 print("We recommend you", song, "by", artist)
+                returnval = "We recommend you", song, "by", artist
 
         added = False
         counter = 0
@@ -72,6 +73,7 @@ class SongRec:
                 data[counter] = data[counter].strip() + "~" + song + ":" + artist + "\n"
                 acntinfo.seek(0)
                 acntinfo.truncate()
+                print(data)
                 acntinfo.writelines(data)
                 added = True
             counter += 1
@@ -79,6 +81,9 @@ class SongRec:
             acntinfo.write("\n" + user+"~"+song+":"+artist)
 
         driver.close()
+        print("exiting")
+        return returnval
+# SongRec.recommend("country", "devon")
 
 # users=open("users.txt", "r+")
 # uarr = users.read().split()

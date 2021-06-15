@@ -5,6 +5,7 @@ from SongRec import SongRec
 
 currentUser = None
 pastrecs = []
+selectedSong = None
 
 class interface(Frame):
     def __init__(self, master, previous, user):
@@ -26,8 +27,10 @@ class interface(Frame):
         b = b[int(start) + 1:]
         end = b.index("'")
         b = b[:int(end)]
-        self.selected = b
-        print(self.selected)
+        
+        global selectedSong
+        selectedSong = b
+
 
     def play_music(self):
         if self.playing == False:
@@ -59,8 +62,6 @@ class interface(Frame):
         Label(self, text="By Hayun Jung, Devon Lai, Kevin Liu", font=("Helvetica",16)).grid(row=8, column = 3)
 
     def recommendations(self):
-        # define user variable
-        # display songs on screen instead of in terminal
         global currentUser 
         previoussongs = SongRec.retrieveSongs(currentUser)
         global pastrecs
@@ -73,8 +74,16 @@ class interface(Frame):
 
     def next(self):
         # 1. send input song to ML model to determine genre
+        global selectedSong
+        genre = self.getGenre(selectedSong) #NOT A REAL FUNCTION YET
+
+        
         # 2. run recommend function, using genre as input
-        # define both variables
+        global currentUser
+        ret = SongRec.recommend(genre, currentUser) #THIS IS DELETING ACNTINFO FOR SOME REASON
+
         # display rec on screen instead of in terminal
-        SongRec.recommend(genre, user)
-        Label(self, text="Recommendation", font=("Helvetica", 10, "bold")).grid(row=7, column=3)
+        Label(self, text=ret, font=("Helvetica", 10, "bold")).grid(row=7, column=3)
+
+    def getGenre(self,a):
+        return "Country"
