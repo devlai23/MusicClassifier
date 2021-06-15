@@ -1,10 +1,14 @@
 from tkinter import *
 from tkinter import filedialog
 import winsound
-import SongRec
+from SongRec import SongRec
+
+currentUser = None
 
 class interface(Frame):
-    def __init__(self, master, previous):
+    def __init__(self, master, previous, user):
+        global currentUser
+        currentUser = user
         super().__init__(master)
         self.grid()
         self.selected = ""
@@ -55,8 +59,9 @@ class interface(Frame):
 
     def recommendations(self):
         # define user variable
-        # display songs on screen instead of in terminal    
-        SongRec.retrieveSongs(user)
+        # display songs on screen instead of in terminal
+        global currentUser 
+        SongRec.retrieveSongs(currentUser)
 
     def next(self):
         # 1. send input song to ML model to determine genre

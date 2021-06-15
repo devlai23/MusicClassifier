@@ -78,41 +78,41 @@ class SongRec:
 
         driver.close()
 
-users=open("users.txt", "r+")
-uarr = users.read().split()
-passes=open("passwords.txt", "r+")
-parr = passes.read().split()
+# users=open("users.txt", "r+")
+# uarr = users.read().split()
+# passes=open("passwords.txt", "r+")
+# parr = passes.read().split()
 
-i=""
-user = None
-while (i != "quit"):
-    print("What would you like to do?")
-    i = input()
-    if (i == "sign up"):
-        print("please enter a username")
-        users.write(input() + " ")
-        print("please enter a password")
-        passes.write(input() + " ")
+# i=""
+# user = None
+# while (i != "quit"):
+#     print("What would you like to do?")
+#     i = input()
+#     if (i == "sign up"):
+#         print("please enter a username")
+#         users.write(input() + " ")
+#         print("please enter a password")
+#         passes.write(input() + " ")
 
-    users.seek(0)
-    passes.seek(0)
-    uarr = users.read().split()
-    parr = passes.read().split()
-    while (i == "sign in"):
-        print("enter your username")
-        uin = input()
-        if (uin not in uarr):
-            print("invalid username")
-        else:
-            print("enter your password")
-            upass = input()
-            if (parr[uarr.index(uin)] == upass):
-                user = uin
-                break
-            else:
-                print("invalid password")
-    if user != None:
-        break
+#     users.seek(0)
+#     passes.seek(0)
+#     uarr = users.read().split()
+#     parr = passes.read().split()
+#     while (i == "sign in"):
+#         print("enter your username")
+#         uin = input()
+#         if (uin not in uarr):
+#             print("invalid username")
+#         else:
+#             print("enter your password")
+#             upass = input()
+#             if (parr[uarr.index(uin)] == upass):
+#                 user = uin
+#                 break
+#             else:
+#                 print("invalid password")
+#     if user != None:
+#         break
 
-s = "Country"
-SongRec.recommend(s, user)
+# s = "Country"
+# SongRec.recommend(s, user)

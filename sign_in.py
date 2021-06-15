@@ -1,8 +1,10 @@
 from tkinter import *
 
+username = None
 class In(Frame):
     def __init__(self, master, choosing):
         super().__init__(master)
+        self.choosing = choosing
         self.grid()
         self.create_widgets()
 
@@ -38,7 +40,6 @@ class In(Frame):
 
         name = self.user_var.get()
         password = self.pass_var.get()
-        user = None
 
         if name not in uarr:
             Label(self, text="Wrong Username, Try again!", font=("Helvetica", 20)).grid(row=11, column=5)
@@ -46,7 +47,12 @@ class In(Frame):
         else:
             Label(self, text="", font=("Helvetica", 20)).grid(row=11, column=5)
             if parr[uarr.index(name)] == password:
-                user = name
+                global username
+                username = name
                 self.choosing()
             else:
                 Label(self, text="Wrong Password, Try again!", font=("Helvetica", 20)).grid(row=11, column=5)
+
+    def getUser(self):
+        global username
+        return username

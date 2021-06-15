@@ -1,7 +1,5 @@
 from tkinter import *
-
 from interface import interface
-#from default import Default
 from login_page import Login
 from sign_in import In
 from sign_up import Up
@@ -37,7 +35,7 @@ class Manager(object):
     def interface(self):
         self.currentScreen.destroy()
         self.root.title("Choose Recommendations")
-        self.currentScreen = interface(self.root, self.recommendations)
+        self.currentScreen = interface(self.root, self.recommendations, In.getUser(self))
 
     def recommendations(self):
         self.currentScreen.destroy()
