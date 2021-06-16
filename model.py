@@ -33,7 +33,7 @@ np_scaled = min_max_scaler.fit_transform(X)
 X = pd.DataFrame(np_scaled, columns = cols)
 
 cols = X2.columns
-np_scaled = min_max_scaler.transform(X2)
+np_scaled = min_max_scaler.fit_transform(X2)
 X2 = pd.DataFrame(np_scaled, columns = cols)
 
 X_train, X_test, y_train, y_test = train_test_split (X, y, test_size = 0.1 , random_state = 42, stratify = y)
