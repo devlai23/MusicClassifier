@@ -66,6 +66,9 @@ class interface(Frame):
 
         Label(self, text="By Hayun Jung, Devon Lai, Kevin Liu", font=("Helvetica",16)).grid(row=14, column = 2)
 
+        self.recLabel = Label(self, text="", font=("Helvetica", 10, "bold"))
+        self.recLabel.grid(row=11, column=2)
+
     def threading(self):
         t1 = Thread(target=self.n)
         t1.start()
@@ -82,7 +85,6 @@ class interface(Frame):
         return pastrecs
 
     def n(self):
-        Label(self, text="", font=("Helvetica", 10, "bold")).grid(row=11, column=3)
         # 1. send input song to ML model to determine genre
         global selectedSong
         g = GenreClassifier()
@@ -98,7 +100,7 @@ class interface(Frame):
         s = ""
         for x in ret:
             s += x + " "
-        Label(self, text=s, font=("Helvetica", 10, "bold")).grid(row=11, column=2)
+        self.recLabel.config(text = s)
 
     def getSampleGenre(self,a):
         return "Country"
