@@ -58,13 +58,13 @@ class interface(Frame):
 
         Button(self, text="Choose File:", command=self.choosethemusic, font=("Helvetica", 10, "bold")).grid(row =7, column=2)
 
-        Button(self, text="Play Music/Stop Music", command=self.play_music,font=("Helvetica", 10, "bold")).grid(row =7, column = 2)
+        Button(self, text="Play Music/Stop Music", command=self.play_music,font=("Helvetica", 10, "bold")).grid(row =8, column = 2)
 
-        Button(self, text="Previous Recommendations", command=self.recommendations, font=("Helvetica", 10, "bold")).grid(row=8, column=2)
+        Button(self, text="Previous Recommendations", command=self.recommendations, font=("Helvetica", 10, "bold")).grid(row=9, column=2)
 
-        Button(self, text="New Recommendation", command=self.threading, font=("Helvetica", 10, "bold")).grid(row=6, column=5)
+        Button(self, text="New Recommendation", command=self.threading, font=("Helvetica", 10, "bold")).grid(row=10, column=2)
 
-        Label(self, text="By Hayun Jung, Devon Lai, Kevin Liu", font=("Helvetica",16)).grid(row=14, column = 3)
+        Label(self, text="By Hayun Jung, Devon Lai, Kevin Liu", font=("Helvetica",16)).grid(row=14, column = 2)
 
     def threading(self):
         t1 = Thread(target=self.n)
@@ -98,7 +98,7 @@ class interface(Frame):
         s = ""
         for x in ret:
             s += x + " "
-        Label(self, text=s, font=("Helvetica", 10, "bold")).grid(row=11, column=3)
+        Label(self, text=s, font=("Helvetica", 10, "bold")).grid(row=11, column=2)
 
     def getSampleGenre(self,a):
         return "Country"
