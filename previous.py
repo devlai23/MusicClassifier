@@ -16,7 +16,7 @@ class Previous(Frame):
         lb = Listbox(self, width=50)
         for x in pastrecs:
             lb.insert('end', x)
-        lb.grid(row=3, column = 3)
+        lb.grid(row=4, column = 3)
 
         Button(self, text="Go back for more Recommendations!", command=self.back,font=("Helvetica", 10, "bold")).grid(row=1, column = 3)
 
