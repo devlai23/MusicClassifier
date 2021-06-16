@@ -33,7 +33,6 @@ np_scaled = min_max_scaler.fit_transform(X)
 X = pd.DataFrame(np_scaled, columns = cols)
 
 cols = X2.columns
-min_max_scaler = preprocessing.MinMaxScaler()
 np_scaled = min_max_scaler.transform(X2)
 X2 = pd.DataFrame(np_scaled, columns = cols)
 
